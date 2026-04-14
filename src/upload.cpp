@@ -195,6 +195,9 @@ bool sendFileToTelegram(std::string_view path, size_t size, bool compression) {
     url += fileTypeInfo.telegramMethod;
     url += "?chat_id=";
     url += chatId;
+    if (fileTypeInfo.telegramMethod == "sendVideo") {
+        url += "&width=1280&height=720";
+    }
 
     Logger::get().debug() << logPrefix << "URL is " << url << endl;
 
